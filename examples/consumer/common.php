@@ -59,7 +59,9 @@ function &getStore() {
         exit(0);
     }
 
-    return new Auth_OpenID_FileStore($store_path);
+    $fs =& new Auth_OpenID_FileStore($store_path);
+
+    return $fs;
 }
 
 function &getConsumer() {
@@ -67,7 +69,7 @@ function &getConsumer() {
      * Create a consumer object using the store object created
      * earlier.
      */
-    $store = getStore();
+    $store =& getStore();
     $consumer =& new Auth_OpenID_Consumer($store);
     return $consumer;
 }
